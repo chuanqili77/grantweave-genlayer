@@ -17,5 +17,12 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npx playwright install --with-deps chromium
+      - name: Configure browser
+        run: |
+          grantweave_browser_path="$(command -v google-chrome || command -v chromium || true)"
+          if [ -n "$grantweave_browser_path" ]; then
+            printf 'PLAYWRIGHT_EXECUTABLE_PATH=%s\n' "$grantweave_browser_path" >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
       - run: npm run test:browser
