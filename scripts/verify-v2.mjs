@@ -6,7 +6,7 @@ import { studionet } from 'genlayer-js/chains';
 import { getAddress } from 'viem';
 import { normalizeReceipt, successful, validateSnapshot, used } from '../src/model.js';
 
-// Keys stay outside both repositories. Every write uses zero transfer value.
+// Wallet keys come from environment variables. Every write uses zero transfer value.
 const projectKey = process.env.GRANTWEAVE_PRIVATE_KEY;
 const aKey = process.env.GRANTWEAVE_FUNDER_A_KEY;
 const bKey = process.env.GRANTWEAVE_FUNDER_B_KEY;
