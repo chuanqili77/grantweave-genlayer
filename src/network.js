@@ -1,6 +1,7 @@
 import { createClient } from "genlayer-js";
 import { studionet } from "genlayer-js/chains";
 import { normalizeReceipt } from "./model.js";
+import { getAddress } from "viem";
 
 export function createAdapter(provider = window.ethereum) {
   const reader = createClient({ chain: studionet });
@@ -17,7 +18,7 @@ export function createAdapter(provider = window.ethereum) {
     chain: () => provider.request({ method: "eth_chainId" }),
     read: (address) =>
       reader.readContract({
-        address,
+        address: getAddress(address),
         functionName: "snapshot",
         args: [],
         transactionHashVariant: "latest-final",
@@ -40,7 +41,7 @@ export function createAdapter(provider = window.ethereum) {
       if (current?.toLowerCase() !== account || Number(chain) !== studionet.id)
         throw Error("Wallet or network changed. Reconnect before writing.");
       return writer.writeContract({
-        address,
+        address: getAddress(address),
         account,
         functionName,
         args,
