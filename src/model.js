@@ -50,13 +50,16 @@ export function normalizeReceipt(r) {
     (leader?.execution_result === "SUCCESS" && leader?.result?.status === "return"
       ? "FINISHED_WITH_RETURN"
       : leader?.execution_result);
-  return { ...r, statusName: r.statusName || r.status_name,
+  const results = ["IDLE", "AGREE", "DISAGREE", "TIMEOUT", "DETERMINISTIC_VIOLATION", "NO_MAJORITY", "MAJORITY_AGREE", "MAJORITY_DISAGREE"];
+  const resultName = r.resultName || r.result_name || results[r.result];
+  return { ...r, resultName, statusName: r.statusName || r.status_name,
     txExecutionResultName: execution };
 }
 export const successful = (r) => {
   const receipt = normalizeReceipt(r);
   return receipt?.statusName === "FINALIZED" &&
-    receipt?.txExecutionResultName === "FINISHED_WITH_RETURN";
+    receipt?.txExecutionResultName === "FINISHED_WITH_RETURN" &&
+    ["MAJORITY_AGREE", "AGREE", "SUCCESS"].includes(receipt?.resultName);
 };
 export const terminal = (r) =>
   ["FINALIZED", "CANCELED", "UNDETERMINED"].includes(r?.statusName);
@@ -86,16 +89,17 @@ export function validateSnapshot(raw) {
   const text = (v, max) => typeof v === "string" && v.trim() && v.length <= max;
   if (
     !s ||
-    s.schema !== 1 ||
+    ![1, 2].includes(s.schema) ||
     !text(s.project, 160) ||
     !/^[A-Z]{3}$/.test(s.currency) ||
-    !/^0x[0-9a-fA-F]{40}$/.test(s.owner) ||
+    (s.schema === 1 && !/^0x[0-9a-fA-F]{40}$/.test(s.owner)) ||
     !Array.isArray(s.costs) ||
     s.costs.length > 24 ||
     !Array.isArray(s.reservations) ||
     s.reservations.length > 120
   )
     throw Error("Unexpected contract schema");
+  if (s.schema === 2) validateV2(s, text, integer);
   s.costs.forEach((c, i) => {
     if (
       c.id !== i + 1 ||
@@ -114,14 +118,63 @@ export function validateSnapshot(raw) {
       r.cost_id > s.costs.length ||
       !integer(r.amount) ||
       typeof r.active !== "boolean" ||
-      !text(r.source, 160) ||
+      (s.schema === 1 ? !text(r.source, 160) : !s.funders.includes(r.funder)) ||
       !text(r.reference, 160) ||
-      references.has(r.reference)
+      references.has(s.schema === 2 ? `${r.funder}:${r.reference}` : r.reference)
     )
       throw Error("Invalid reservation in contract state");
-    references.add(r.reference);
+    references.add(s.schema === 2 ? `${r.funder}:${r.reference}` : r.reference);
   });
   if (s.costs.some((c) => used(s, c.id) > c.cap))
     throw Error("Contract state exceeds an expense cap");
   return s;
+}
+
+const address = (v) => typeof v === "string" && /^0x[0-9a-f]{40}$/.test(v) && !/^0x0{40}$/.test(v);
+function validateV2(s, text, integer) {
+  if (!address(s.project_party) || !Array.isArray(s.funders) ||
+      s.funders.length !== 2 || !s.funders.every(address) ||
+      new Set([s.project_party, ...s.funders]).size !== 3 ||
+      s.required_approvals !== 2 || !Array.isArray(s.proposals) || s.proposals.length > 48)
+    throw Error("Invalid V2 participants or approvals");
+  s.proposals.forEach((p, i) => {
+    if (p.id !== i + 1 || ![s.project_party, ...s.funders].includes(p.proposer) ||
+        !text(p.description, 900) || !text(p.evidence, 1800) || !integer(p.cap) ||
+        !Array.isArray(p.approvals) || !p.approvals.every(a => s.funders.includes(a)) ||
+        new Set(p.approvals).size !== p.approvals.length ||
+        !["PENDING", "ACTIVE"].includes(p.status))
+      throw Error("Invalid V2 proposal");
+    const cost = s.costs.find(c => c.proposal_id === p.id);
+    if (p.status === "ACTIVE" ? (!cost || p.cost_id !== cost.id || p.approvals.length !== 2 ||
+        cost.description !== p.description || cost.evidence !== p.evidence || cost.cap !== p.cap)
+        : (cost || p.cost_id !== undefined))
+      throw Error("Invalid V2 proposal activation");
+  });
+  if (new Set(s.costs.map(c => c.proposal_id)).size !== s.costs.length ||
+      s.costs.some(c => s.proposals[c.proposal_id - 1]?.status !== "ACTIVE"))
+    throw Error("Invalid V2 cost proposal link");
+}
+export function walletRole(state, account) {
+  const who = account?.toLowerCase();
+  if (!who) return "Disconnected";
+  if (state.schema === 2) {
+    if (who === state.project_party) return "Project party";
+    const index = state.funders.indexOf(who);
+    return index >= 0 ? `Funder ${index + 1}` : "Read only";
+  }
+  return who === state.owner?.toLowerCase() ? "Registrar" : "Read only";
+}
+export function canWrite(state, account, method, args = []) {
+  const role = walletRole(state, account);
+  if (state.schema !== 2) return role === "Registrar";
+  const funder = role.startsWith("Funder ");
+  const participant = funder || role === "Project party";
+  if (method === "propose_cost") return participant;
+  if (method === "reserve") return funder;
+  if (method === "release") return funder && state.reservations.some(r => r.id === args[0] && r.active && r.funder === account.toLowerCase());
+  const proposal = state.proposals.find(p => p.id === args[0]);
+  if (!proposal || proposal.status !== "PENDING") return false;
+  if (method === "approve_cost") return funder && !proposal.approvals.includes(account.toLowerCase());
+  if (method === "activate_cost") return participant && proposal.approvals.length === 2;
+  return false;
 }

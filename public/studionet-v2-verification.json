@@ -1,0 +1,4303 @@
+{
+  "schema": 2,
+  "chainId": 61999,
+  "contractAddress": "0x905A5Fb6212677d43cc2f4CdE75A36069e8136f6",
+  "sourceSha256": "e7ba7b86a8010ee7b22b312d06e5db63c692c538a7913e709acfe48612982638",
+  "projectParty": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+  "funders": [
+    "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+    "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA"
+  ],
+  "valueTransferred": "0",
+  "testScope": "Three controlled test wallets verify address-based permissions; they do not represent independent organizations. Model decisions are real network results; invoice facts are synthetic.",
+  "steps": [
+    {
+      "name": "propose-microscope",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "propose_cost",
+      "args": [
+        "One workshop microscope",
+        "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+        120000
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x5463e2e8de41d6b7cf1c26feff44bebeb3afc9b774750fca57aa4af2fa7c6797",
+      "before": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+          "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "idle",
+          "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "agree",
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "idle",
+          "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reject-project-self-approval",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "approve_cost",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": false,
+      "transactionHash": "0x941a2a7add9997935470a620d1bce548fd01803e15f699373948c14a6c0a7104",
+      "before": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "votes": {
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+          "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "agree",
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "agree",
+          "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AU9ubHkgYSByZWdpc3RlcmVkIGZ1bmRlciBtYXkgcGVyZm9ybSB0aGlzIGFjdGlvbg==",
+              "status": "rollback",
+              "payload": "Only a registered funder may perform this action"
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AU9ubHkgYSByZWdpc3RlcmVkIGZ1bmRlciBtYXkgcGVyZm9ybSB0aGlzIGFjdGlvbg==",
+              "status": "rollback",
+              "payload": "Only a registered funder may perform this action"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-funder-a",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "approve_cost",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0xd1b405383f664fe37ead3d10ab0c1115a200c9b1f8fdc2ec561bc09cb7979410",
+      "before": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "idle",
+          "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "idle",
+          "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reject-one-approval-activation",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "activate_cost",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": false,
+      "transactionHash": "0x2aed35b640e5e5fe9eec9be132deef729d5bf697f630551053e897fa9f6e2edc",
+      "before": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "votes": {
+          "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "idle",
+          "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+          "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree",
+          "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AUJvdGggZnVuZGVycyBtdXN0IGFwcHJvdmUgdGhlIGltbXV0YWJsZSBwcm9wb3NhbA==",
+              "status": "rollback",
+              "payload": "Both funders must approve the immutable proposal"
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AUJvdGggZnVuZGVycyBtdXN0IGFwcHJvdmUgdGhlIGltbXV0YWJsZSBwcm9wb3NhbA==",
+              "status": "rollback",
+              "payload": "Both funders must approve the immutable proposal"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-funder-b",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "approve_cost",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0xf3984494bba6715d184c0c62498408156f0c83ddd2365c213ce514af61a28798",
+      "before": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+          "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "idle",
+          "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+          "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "agree",
+          "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "activate-approved-cost",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "activate_cost",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x18819453dd8d5bc1d416dfaa9508c4a18b66c037dcc26c760a069bf86152e3d0",
+      "before": {
+        "costs": [],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "idle",
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+          "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "agree",
+          "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reject-project-reservation",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "reserve",
+      "args": [
+        1,
+        1,
+        "PROJECT-DENIED"
+      ],
+      "value": "0",
+      "expectedSuccess": false,
+      "transactionHash": "0x52ce1bbf5b187df616741cdb8b1b2f9dfc1edfdb00b30a584fd62ea39f98e24d",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "votes": {
+          "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+          "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "agree",
+          "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "idle",
+          "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AU9ubHkgYSByZWdpc3RlcmVkIGZ1bmRlciBtYXkgcGVyZm9ybSB0aGlzIGFjdGlvbg==",
+              "status": "rollback",
+              "payload": "Only a registered funder may perform this action"
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reserve-funder-a",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "reserve",
+      "args": [
+        1,
+        70000,
+        "A-001"
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0xb03b7055049e9eed5d7f0d28165d721ffbc9cd724934ef648f4b3ad21eab126a",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "agree",
+          "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+          "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+          "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "agree",
+          "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reserve-funder-b",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "reserve",
+      "args": [
+        1,
+        50000,
+        "B-001"
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x6d476b486f045e9452c8f6aa9670b416f090c4c8c16ef0579e94ff210176c753",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+          "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+          "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "agree",
+          "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "idle",
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reject-shared-over-cap",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "reserve",
+      "args": [
+        1,
+        1,
+        "OVER-001"
+      ],
+      "value": "0",
+      "expectedSuccess": false,
+      "transactionHash": "0x6ebf9895141e5496cea49e3d2692a35b930d16df1d5c22ddf2e57c0c2defd695",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "votes": {
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+          "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "agree",
+          "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "agree",
+          "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "agree",
+          "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AUV4cGVuc2UgY2FwYWNpdHkgZXhjZWVkZWQ=",
+              "status": "rollback",
+              "payload": "Expense capacity exceeded"
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AUV4cGVuc2UgY2FwYWNpdHkgZXhjZWVkZWQ=",
+              "status": "rollback",
+              "payload": "Expense capacity exceeded"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reject-other-funder-release",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "release",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": false,
+      "transactionHash": "0x4da3609f330f3f3b99b72259681357584a0130abdda1995e7d57230c595b5940",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "votes": {
+          "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "agree",
+          "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+          "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "idle",
+          "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "agree",
+          "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AU9ubHkgdGhlIHJlc2VydmF0aW9uIGZ1bmRlciBtYXkgcmVsZWFzZSBpdA==",
+              "status": "rollback",
+              "payload": "Only the reservation funder may release it"
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reject-project-release",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "release",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": false,
+      "transactionHash": "0xe6c6ffdc7f2490ebe7f1a56f7439a8f1238d8fc6b26036c452a0e1ff2f6fdf23",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "votes": {
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+          "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree",
+          "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "idle",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree",
+          "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AU9ubHkgYSByZWdpc3RlcmVkIGZ1bmRlciBtYXkgcGVyZm9ybSB0aGlzIGFjdGlvbg==",
+              "status": "rollback",
+              "payload": "Only a registered funder may perform this action"
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "release-own-reservation",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "release",
+      "args": [
+        1
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0xb077df4fbeccbe6b897eb1045a2f970c5e770932781b45d68f358616224d646b",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": true,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+          "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "agree",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree",
+          "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "propose-renamed-duplicate",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "propose_cost",
+      "args": [
+        "Optical research equipment",
+        "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+        120000
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x78fee97edb3e0de50d765aa6c95dd7c6294ed76b2a3721e677b82d86a5e9d6b6",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "agree",
+          "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "idle",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree",
+          "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-duplicate-a",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "approve_cost",
+      "args": [
+        2
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0xb1ba744dd6fe3bf289faa0ad8f6a7e629be82b309cd70dc4001ec5a28073cdc9",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "idle",
+          "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+          "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "agree",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-duplicate-b",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "approve_cost",
+      "args": [
+        2
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x8a690c96ed01b4b2f794f6133b4c0c2607ff01c8656fdb37041e584b7dffc502",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "idle",
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "agree",
+          "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "idle",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "reject-duplicate-despite-both-approvals",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "activate_cost",
+      "args": [
+        2
+      ],
+      "value": "0",
+      "expectedSuccess": false,
+      "transactionHash": "0x9f740897d754fc5f6c488a32476838fdf6bf44d0203e0ede98b0d176ce4165ae",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "votes": {
+          "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "agree",
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "idle",
+          "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+          "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "idle",
+          "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AU92ZXJsYXBwaW5nIG9yIHVuY2VydGFpbiBleHBlbnNlOiByZXNlcnZlIGFnYWluc3QgdGhlIGV4aXN0aW5nIGNvc3Qgb3IgY2xhcmlmeSBldmlkZW5jZQ==",
+              "status": "rollback",
+              "payload": "Overlapping or uncertain expense: reserve against the existing cost or clarify evidence"
+            },
+            "equivalenceOutputs": {
+              "0": {
+                "raw": "AJQCW3siaW5kZXgiOiAwLCAicmVsYXRpb24iOiAiU0FNRSJ9XQ==",
+                "status": "return",
+                "payload": {
+                  "raw": [
+                    148,
+                    2,
+                    91,
+                    123,
+                    34,
+                    105,
+                    110,
+                    100,
+                    101,
+                    120,
+                    34,
+                    58,
+                    32,
+                    48,
+                    44,
+                    32,
+                    34,
+                    114,
+                    101,
+                    108,
+                    97,
+                    116,
+                    105,
+                    111,
+                    110,
+                    34,
+                    58,
+                    32,
+                    34,
+                    83,
+                    65,
+                    77,
+                    69,
+                    34,
+                    125,
+                    93
+                  ],
+                  "readable": "\"[{\\\"index\\\": 0, \\\"relation\\\": \\\"SAME\\\"}]\""
+                }
+              }
+            }
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AU92ZXJsYXBwaW5nIG9yIHVuY2VydGFpbiBleHBlbnNlOiByZXNlcnZlIGFnYWluc3QgdGhlIGV4aXN0aW5nIGNvc3Qgb3IgY2xhcmlmeSBldmlkZW5jZQ==",
+              "status": "rollback",
+              "payload": "Overlapping or uncertain expense: reserve against the existing cost or clarify evidence"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "propose-distinct-hall",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "propose_cost",
+      "args": [
+        "Community hall hire",
+        "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+        40000
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x559b7094967f8943a92c1d0d02b667676d7fc2415aad69e1e1df089000ec0d3a",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "idle",
+          "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "agree",
+          "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "agree",
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "agree",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-hall-a",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "approve_cost",
+      "args": [
+        3
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0xb0112e05822c4eefad7332e5a3d23fc5678ae353029ee53afe7ab7bd3d96aa6a",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "agree",
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "idle",
+          "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "agree",
+          "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree",
+          "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-hall-b",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "approve_cost",
+      "args": [
+        3
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0xd1f6ddb956439a9d6a8eecc038ad1586d37026ed4899eeb4d3245b941655cabb",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "votes": {
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "idle",
+          "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+          "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "idle",
+          "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree",
+          "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "activate-distinct-hall",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "activate_cost",
+      "args": [
+        3
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x8c34fe374b0123ae42557c4b3ff3661bd9c538be39d42d62f11b42493c023340",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "result": "MAJORITY_DISAGREE",
+        "votes": {
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+          "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "disagree",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "disagree",
+          "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "disagree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {
+              "0": {
+                "raw": "ALQCW3siaW5kZXgiOiAwLCAicmVsYXRpb24iOiAiRElTVElOQ1QifV0=",
+                "status": "return",
+                "payload": {
+                  "raw": [
+                    180,
+                    2,
+                    91,
+                    123,
+                    34,
+                    105,
+                    110,
+                    100,
+                    101,
+                    120,
+                    34,
+                    58,
+                    32,
+                    48,
+                    44,
+                    32,
+                    34,
+                    114,
+                    101,
+                    108,
+                    97,
+                    116,
+                    105,
+                    111,
+                    110,
+                    34,
+                    58,
+                    32,
+                    34,
+                    68,
+                    73,
+                    83,
+                    84,
+                    73,
+                    78,
+                    67,
+                    84,
+                    34,
+                    125,
+                    93
+                  ],
+                  "readable": "\"[{\\\"index\\\": 0, \\\"relation\\\": \\\"DISTINCT\\\"}]\""
+                }
+              }
+            }
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "actualSuccess": false,
+      "outcome": "validator-disagreement-state-unchanged",
+      "verified": true
+    },
+    {
+      "name": "propose-clarified-hall",
+      "caller": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+      "functionName": "propose_cost",
+      "args": [
+        "Hall B rental for two evenings",
+        "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+        40000
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x453b548bb6edd933d1b828af244538df53a6544aecf8ef6525bf39e493ba6e3d",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "result": "MAJORITY_AGREE",
+        "votes": {
+          "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+          "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "idle",
+          "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "agree",
+          "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "idle"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [],
+            "cap": 40000,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 4,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-clarified-hall-a",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "approve_cost",
+      "args": [
+        4
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x0b5d226e5e4569673912dca92da7ef67b02d5d8405fd62d516356fbf0da5de40",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [],
+            "cap": 40000,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 4,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "result": "MAJORITY_AGREE",
+        "votes": {
+          "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+          "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+          "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "idle",
+          "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "idle",
+          "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "ERROR",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 40000,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 4,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "approve-clarified-hall-b",
+      "caller": "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA",
+      "functionName": "approve_cost",
+      "args": [
+        4
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x2d7eb1039b66e0fd417657b75bd224a915254c99bf7f3673c3470152466c92e2",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857"
+            ],
+            "cap": 40000,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 4,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "result": "MAJORITY_AGREE",
+        "votes": {
+          "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "idle",
+          "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "idle",
+          "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+          "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "agree",
+          "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {}
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 4,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    },
+    {
+      "name": "activate-clarified-hall",
+      "caller": "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+      "functionName": "activate_cost",
+      "args": [
+        4
+      ],
+      "value": "0",
+      "expectedSuccess": true,
+      "transactionHash": "0x00b30ac7662bfb5321bddd545ab4bacb996254b817f6706b4785a763d5c3b1cd",
+      "before": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 4,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "PENDING"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "receipt": {
+        "status": "FINALIZED",
+        "execution": "FINISHED_WITH_RETURN",
+        "result": "MAJORITY_AGREE",
+        "votes": {
+          "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+          "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "disagree",
+          "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "idle",
+          "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "agree",
+          "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree"
+        },
+        "leaders": [
+          {
+            "mode": "leader",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            },
+            "equivalenceOutputs": {
+              "0": {
+                "raw": "ALQCW3siaW5kZXgiOiAwLCAicmVsYXRpb24iOiAiRElTVElOQ1QifV0=",
+                "status": "return",
+                "payload": {
+                  "raw": [
+                    180,
+                    2,
+                    91,
+                    123,
+                    34,
+                    105,
+                    110,
+                    100,
+                    101,
+                    120,
+                    34,
+                    58,
+                    32,
+                    48,
+                    44,
+                    32,
+                    34,
+                    114,
+                    101,
+                    108,
+                    97,
+                    116,
+                    105,
+                    111,
+                    110,
+                    34,
+                    58,
+                    32,
+                    34,
+                    68,
+                    73,
+                    83,
+                    84,
+                    73,
+                    78,
+                    67,
+                    84,
+                    34,
+                    125,
+                    93
+                  ],
+                  "readable": "\"[{\\\"index\\\": 0, \\\"relation\\\": \\\"DISTINCT\\\"}]\""
+                }
+              }
+            }
+          },
+          {
+            "mode": "validator",
+            "execution": "SUCCESS",
+            "result": {
+              "raw": "AAA=",
+              "status": "return",
+              "payload": {
+                "raw": [
+                  0
+                ],
+                "readable": "null"
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "costs": [
+          {
+            "cap": 120000,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposal_id": 1
+          },
+          {
+            "cap": 40000,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 2,
+            "proposal_id": 4
+          }
+        ],
+        "currency": "USD",
+        "funders": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "project": "GrantWeave Shared Approval Ledger",
+        "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "proposals": [
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "cost_id": 1,
+            "description": "One workshop microscope",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+            "id": 1,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 120000,
+            "description": "Optical research equipment",
+            "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+            "id": 2,
+            "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "description": "Community hall hire",
+            "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+            "id": 3,
+            "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "status": "PENDING"
+          },
+          {
+            "approvals": [
+              "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+              "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+            ],
+            "cap": 40000,
+            "cost_id": 2,
+            "description": "Hall B rental for two evenings",
+            "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+            "id": 4,
+            "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+            "status": "ACTIVE"
+          }
+        ],
+        "required_approvals": 2,
+        "reservations": [
+          {
+            "active": false,
+            "amount": 70000,
+            "cost_id": 1,
+            "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+            "id": 1,
+            "reference": "A-001"
+          },
+          {
+            "active": true,
+            "amount": 50000,
+            "cost_id": 1,
+            "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+            "id": 2,
+            "reference": "B-001"
+          }
+        ],
+        "schema": 2
+      },
+      "verified": true
+    }
+  ],
+  "completedAt": "2026-10-22T17:37:00.864Z",
+  "finalSnapshot": {
+    "costs": [
+      {
+        "cap": 120000,
+        "description": "One workshop microscope",
+        "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+        "id": 1,
+        "proposal_id": 1
+      },
+      {
+        "cap": 40000,
+        "description": "Hall B rental for two evenings",
+        "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+        "id": 2,
+        "proposal_id": 4
+      }
+    ],
+    "currency": "USD",
+    "funders": [
+      "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+      "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+    ],
+    "project": "GrantWeave Shared Approval Ledger",
+    "project_party": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+    "proposals": [
+      {
+        "approvals": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "cap": 120000,
+        "cost_id": 1,
+        "description": "One workshop microscope",
+        "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items.",
+        "id": 1,
+        "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "status": "ACTIVE"
+      },
+      {
+        "approvals": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "cap": 120000,
+        "description": "Optical research equipment",
+        "evidence": "Synthetic test invoice LAB-104. Supplier North Lab Tools. One microscope model M1 delivered 2026-10-01 to Community Workshop. Full single purchase USD 1200.00. No other items. This is exactly the same LAB-104 purchase already registered, with no additional items.",
+        "id": 2,
+        "proposer": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+        "status": "PENDING"
+      },
+      {
+        "approvals": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "cap": 40000,
+        "description": "Community hall hire",
+        "evidence": "Synthetic invoice HALL-22. Supplier East Hall Association. Hall B rental November 12-13 2026, USD 400.00. No microscope or laboratory equipment; independent purchase from LAB-104.",
+        "id": 3,
+        "proposer": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+        "status": "PENDING"
+      },
+      {
+        "approvals": [
+          "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+          "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa"
+        ],
+        "cap": 40000,
+        "cost_id": 2,
+        "description": "Hall B rental for two evenings",
+        "evidence": "Synthetic test invoice HALL-22 issued by East Hall Association on 2026-10-15. Purchase category: venue rental service. Booking HALL-B-NOV12-13. Deliverable: exclusive use of Hall B, 20 River Road, for the two sessions 2026-11-12 18:00-22:00 and 2026-11-13 18:00-22:00. Quantity two evenings at USD 200.00 each, total USD 400.00. This proposal replaces the unactivated venue proposal with complete booking facts.",
+        "id": 4,
+        "proposer": "0x59b7a335d71adcb1d762a659c3f3de5bef0ee774",
+        "status": "ACTIVE"
+      }
+    ],
+    "required_approvals": 2,
+    "reservations": [
+      {
+        "active": false,
+        "amount": 70000,
+        "cost_id": 1,
+        "funder": "0xc646703f392889160362d3ce8e4ffc6c840ac857",
+        "id": 1,
+        "reference": "A-001"
+      },
+      {
+        "active": true,
+        "amount": 50000,
+        "cost_id": 1,
+        "funder": "0xf6ac6ab93be3cb92ad83f6c5a9472926179d47fa",
+        "id": 2,
+        "reference": "B-001"
+      }
+    ],
+    "schema": 2
+  },
+  "observations": [
+    {
+      "transactionHash": "0x8c34fe374b0123ae42557c4b3ff3661bd9c538be39d42d62f11b42493c023340",
+      "description": "Leader returned successfully but a majority of validators disagreed. Activation did not commit state. A clarified proposal requires fresh approvals."
+    }
+  ]
+}

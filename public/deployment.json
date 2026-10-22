@@ -1,16 +1,25 @@
 {
+  "schema": 2,
   "chainId": 61999,
   "network": "studionet",
-  "project": "GrantWeave Public Test Ledger",
+  "project": "GrantWeave Shared Approval Ledger",
   "currency": "USD",
-  "sourceSha256": "ccdc9aa0e4cce148899fd61045a953ec44dad54940d3b1a92519bed048a3b393",
+  "sourceSha256": "e7ba7b86a8010ee7b22b312d06e5db63c692c538a7913e709acfe48612982638",
   "constructorArgs": [
-    "GrantWeave Public Test Ledger",
-    "USD"
+    "GrantWeave Shared Approval Ledger",
+    "USD",
+    "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+    "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA"
   ],
-  "registrar": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
-  "transactionHash": "0x52695c83f1e9ce7b6db1318ff06ed8a3a218d53d96e10b42292ddb301da9758b",
-  "contractAddress": "0x87cB0341BDd533338e00A9E7F29dDd0396857A27",
+  "projectParty": "0x59B7A335d71ADCb1D762a659C3f3DE5bEf0EE774",
+  "funders": [
+    "0xC646703f392889160362D3cE8E4FFc6C840Ac857",
+    "0xF6Ac6ab93bE3CB92ad83f6C5a9472926179D47FA"
+  ],
+  "transactionHash": "0x131839e89ba89541cef2f2eb066e348849d37b7d2ec949e7561f9d9fa539a448",
   "status": "FINALIZED",
-  "execution": "FINISHED_WITH_RETURN"
+  "valueTransferred": "0",
+  "execution": "FINISHED_WITH_RETURN",
+  "contractAddress": "0x905A5Fb6212677d43cc2f4CdE75A36069e8136f6",
+  "legacyContractAddress": "0x87cB0341BDd533338e00A9E7F29dDd0396857A27"
 }

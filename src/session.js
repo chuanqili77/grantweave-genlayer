@@ -1,4 +1,4 @@
-import { successful, terminal, validateSnapshot } from "./model.js";
+import { successful, terminal, validateSnapshot, canWrite } from "./model.js";
 
 const addressPattern = /^0x[0-9a-fA-F]{40}$/;
 const hashPattern = /^0x[0-9a-fA-F]{64}$/;
@@ -116,9 +116,11 @@ export class LedgerSession {
       }
       if (Number(chain) !== this.adapter.chainId)
         throw Error("Switch wallet to Studionet before writing");
-      if (this.account !== this.state.owner.toLowerCase())
+      if (!canWrite(this.state, this.account, functionName, args))
         throw Error(
-          "Only the project registrar can write. This wallet has read-only access.",
+          this.state.schema === 2
+            ? "This wallet cannot perform that action in the current proposal or reservation state."
+            : "Only the project registrar can write. This wallet has read-only access.",
         );
       const address = this.address;
       const hash = await this.adapter.write(
@@ -207,7 +209,7 @@ export class LedgerSession {
         /* Keep stale state read-only. */
       }
       throw Error(
-        `Transaction ended without success: ${receipt.statusName} / ${receipt.txExecutionResultName || "unknown execution"}.`,
+        `Transaction ended without success: ${receipt.statusName} / ${receipt.txExecutionResultName || "unknown execution"} / ${receipt.resultName || receipt.result_name || "unknown consensus"}.`,
       );
     }
     // Keep the ID until read-back succeeds. Recovery after an RPC outage must not submit another write.

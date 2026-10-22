@@ -1,6 +1,6 @@
 {
   "name": "grantweave",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "vite build --base=./",
     "test": "node --test src/*.test.js",
     "test:browser": "node tests/browser.mjs",
-    "deploy:plan": "node scripts/deploy.mjs"
+    "deploy:plan": "node scripts/deploy.mjs",
+    "verify:v2": "node scripts/verify-v2.mjs"
   },
   "dependencies": {
     "genlayer-js": "1.1.8",

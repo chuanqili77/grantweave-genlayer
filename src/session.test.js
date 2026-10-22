@@ -8,7 +8,7 @@ const address = "0x" + "a".repeat(40),
   hash = "0x" + "f".repeat(64);
 const finalized = {
   statusName: "FINALIZED",
-  txExecutionResultName: "FINISHED_WITH_RETURN",
+  txExecutionResultName: "FINISHED_WITH_RETURN", resultName: "MAJORITY_AGREE",
 };
 function fixture() {
   const values = new Map();

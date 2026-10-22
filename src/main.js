@@ -1,6 +1,9 @@
 import "./style.css";
-import deployment from "../public/deployment.json";
-import { demo, minor, used, reserveDemo } from "./model.js";
+const deployment = await fetch(import.meta.env.BASE_URL + "deployment.json", { cache: "no-store" }).then(response => {
+  if (!response.ok) throw Error("Deployment configuration could not load");
+  return response.json();
+});
+import { demo, minor, used, reserveDemo, walletRole, canWrite } from "./model.js";
 import { LedgerSession, readJSON } from "./session.js";
 import { createAdapter } from "./network.js";
 const $ = (s) => document.querySelector(s),
@@ -40,15 +43,29 @@ const cash = (n) =>
     currency: state.currency,
   }).format(n / 100);
 $("#app").innerHTML =
-  `<header><a class="brand" href="#"><img class="mark" src="./grantweave-logo.svg" alt="" width="42" height="42"> GrantWeave</a><nav><a href="#ledger">Cost ledger</a><a href="#how">How it works</a><button id="mode" class="quiet">Switch to live</button><button id="wallet">Connect wallet</button></nav></header><main><div class="eyebrow">SHARED FUNDING. CLEAR BOUNDARIES.</div><section class="hero"><div><h1>Many funders.<br><em>One honest ledger.</em></h1><p>Keep every project expense visible. Catch renamed duplicate costs before funding overlaps, and share the remaining capacity with confidence.</p><a class="cta" href="#ledger">Open the cost ledger ↗</a></div><aside class="hero-card"><span class="tag">THE FUNDING THREAD</span><div class="thread"><span>Science fund</span><b>↘</b><strong>One microscope</strong><b>↗</b><span>Local sponsor</span></div><div class="rule">Two contributions. One expense cap.</div><p>GenLayer checks meaning.<br>The contract protects the numbers.</p></aside></section><div id="notice" role="status" aria-live="polite"></div><section id="settings" hidden><h2>Live connection</h2><p>Studionet · chain ${adapter.chainId}. Reading is public. Writing requires the project registrar’s wallet signature. The prefilled address is the public test ledger; enter your own deployment to manage your project.</p><label>Deployed GrantOverlap address<input id="address" placeholder="0x…" value="${esc(config.address || deployment.contractAddress)}"></label><button id="load">Read contract</button><button id="recover" class="quiet">Resume pending transaction</button><label>Existing transaction ID (optional)<input id="txhash" placeholder="0x…" autocomplete="off"></label><button id="track" class="quiet">Track transaction</button><a href="./contracts/grant_overlap.py" download>Download contract source ↗</a></section><section id="ledger"><div class="section-head"><div><div class="eyebrow">PROJECT WORKSPACE</div><h2 id="project"></h2></div><div><span id="badge" class="tag"></span><button class="quiet" id="export">Export ledger ↓</button></div></div><div class="stats" id="stats"></div><div class="workspace"><div><div id="costs"></div><h3>Funding history</h3><div id="history"></div></div><aside class="panel"><h3>Reserve a contribution</h3><p>Split funding across sources without exceeding the underlying expense.</p><form id="reserve"><label>Expense<select name="cost" id="cost-select"></select></label><label>Funding source<input name="source" required maxlength="160" placeholder="e.g. Community science fund"></label><div class="pair"><label>Amount<input name="amount" required inputmode="decimal" placeholder="250.00"></label><label>Unique reference<input name="reference" required maxlength="160" placeholder="FUND-002"></label></div><button>Reserve capacity ↗</button></form><hr><h3>Register an expense</h3><p>Existing costs are compared by meaning before a new cap can be created.</p><form id="register"><label>Expense description<input name="description" required maxlength="900" placeholder="What is being purchased?"></label><label>Invoice / supporting facts<textarea name="evidence" required maxlength="1800" placeholder="Supplier, invoice identifier, service period and deliverable"></textarea></label><label>Total expense cap<input name="cap" required inputmode="decimal" placeholder="1200.00"></label><button class="secondary">Check & register</button></form></aside></div></section><section id="how"><div class="eyebrow">MEANING → CONSENSUS → CAPACITY</div><h2>Different wording should not create extra money.</h2><div class="steps"><article><b>01 / Compare the expense</b><p>Independent validator reasoning checks whether a new cost is distinct, duplicated or uncertain.</p></article><article><b>02 / Enforce the cap</b><p>Contributions reserve integer minor units against one immutable cost ceiling.</p></article><article><b>03 / Keep the history</b><p>Release unused reservations without erasing their original source or reference.</p></article></div></section><footer>GrantWeave · A shared register, not a payment processor.<br>Checks cover this project's recorded costs and supplied evidence. They do not certify invoices or discover undisclosed external funding.</footer></main>`;
+  `<header><a class="brand" href="#"><img class="mark" src="./grantweave-logo.svg" alt="" width="42" height="42"> GrantWeave</a><nav><a href="#ledger">Cost ledger</a><a href="#how">How it works</a><button id="mode" class="quiet">Switch to live</button><button id="wallet">Connect wallet</button></nav></header><main><div class="eyebrow">SHARED FUNDING. CLEAR BOUNDARIES.</div><section class="hero"><div><h1>Many funders.<br><em>One shared ledger.</em></h1><p>Agree on each expense together. Both funders approve its facts and cap; GenLayer checks for overlap before it becomes available for funding.</p><a class="cta" href="#ledger">Open the cost ledger ↗</a></div><aside class="hero-card"><span class="tag">THE FUNDING THREAD</span><div class="thread"><span>Science fund</span><b>↘</b><strong>One microscope</strong><b>↗</b><span>Local sponsor</span></div><div class="rule">Two approvals. One shared expense cap.</div><p>Funders approve the facts.<br>GenLayer checks meaning.<br>The contract protects the numbers.</p></aside></section><div id="notice" role="status" aria-live="polite"></div><section id="settings" hidden><h2>Live connection</h2><p>Studionet · chain ${adapter.chainId}. Reading is public. V1 writes require the registrar. V2 proposals require participant wallets; both funders must approve before activation. The prefilled address is the public test ledger; enter your own deployment to manage your project.</p><label>Deployed GrantOverlap address<input id="address" placeholder="0x…" value="${esc((config.address?.toLowerCase() === deployment.legacyContractAddress?.toLowerCase() ? deployment.contractAddress : config.address) || deployment.contractAddress)}"></label><button id="load">Read contract</button><button id="recover" class="quiet">Resume pending transaction</button><label>Existing transaction ID (optional)<input id="txhash" placeholder="0x…" autocomplete="off"></label><button id="track" class="quiet">Track transaction</button><a href="./contracts/grant_overlap_v2.py" download>Download V2 contract source ↗</a><a href="./studionet-v2-verification.json" target="_blank" rel="noopener">Public V2 network tests (JSON) ↗</a></section><section id="ledger"><div class="section-head"><div><div class="eyebrow">PROJECT WORKSPACE</div><h2 id="project"></h2></div><div><span id="badge" class="tag"></span><button class="quiet" id="export">Export ledger ↓</button></div></div><div id="participants" class="panel" hidden></div><div class="stats" id="stats"></div><section id="proposals" hidden></section><div class="workspace"><div><div id="costs"></div><h3>Funding history</h3><div id="history"></div></div><aside class="panel"><h3>Reserve a contribution</h3><p>Split funding across sources without exceeding the underlying expense.</p><form id="reserve"><label>Expense<select name="cost" id="cost-select"></select></label><label id="source-label">Funding source<input name="source" required maxlength="160" placeholder="e.g. Community science fund"></label><div class="pair"><label>Amount<input name="amount" required inputmode="decimal" placeholder="250.00"></label><label>Unique reference<input name="reference" required maxlength="160" placeholder="FUND-002"></label></div><button>Reserve capacity ↗</button></form><hr><h3 id="register-title">Register an expense</h3><p id="register-help">Existing costs are compared by meaning before a new cap can be created.</p><form id="register"><label>Expense description<input name="description" required maxlength="900" placeholder="What is being purchased?"></label><label>Invoice / supporting facts<textarea name="evidence" required maxlength="1800" placeholder="Supplier, invoice identifier, service period and deliverable"></textarea></label><label>Total expense cap<input name="cap" required inputmode="decimal" placeholder="1200.00"></label><button class="secondary">Check & register</button></form></aside></div></section><section id="how"><div class="eyebrow">MEANING → CONSENSUS → CAPACITY</div><h2>Different wording should not create extra money.</h2><div class="steps"><article><b>01 / Agree, then compare</b><p>Both funders approve an immutable proposal. Activation then checks it against the latest ledger for duplicates and uncertain overlap.</p></article><article><b>02 / Enforce the cap</b><p>Contributions reserve integer minor units against one immutable cost ceiling.</p></article><article><b>03 / Keep the history</b><p>Release unused reservations without erasing their original source or reference.</p></article></div></section><footer>GrantWeave · A shared register, not a payment processor.<br>Checks cover this project's recorded costs and supplied evidence. They do not certify invoices or discover undisclosed external funding.</footer></main>`;
 function notify(message, error = false) {
   $("#notice").textContent = message;
   $("#notice").className = error ? "error" : "";
 }
 function render() {
+  const v2 = state.schema === 2;
+  const allowed = (name, args = []) => mode === "live" && !!session.state && !session.stale && canWrite(state, session.account, name, args);
+  $("#participants").hidden = !v2;
+  $("#proposals").hidden = !v2;
+  $("#source-label").hidden = v2;
+  $("#source-label input").required = !v2;
+  $("#register-help").textContent = v2 ? "Submit fixed facts and a cap for both funders to approve. Activation then checks overlap against the latest active expenses." : "Existing costs are compared by meaning before a new cap can be created.";
+  $("#register-title").textContent = v2 ? "Propose an expense" : "Register an expense";
+  $("#register button").textContent = v2 ? "Submit for both funders’ approval" : "Check & register";
+  if (v2) {
+    $("#participants").innerHTML = `<h3>Participants · ${esc(walletRole(state, session.account))}</h3><p>Project party: ${esc(state.project_party)}</p>${state.funders.map((a, i) => `<p>Funder ${i + 1}: ${esc(a)}</p>`).join("")}<p>Both funders approve each immutable proposal. Reservations belong to the signing funder.</p>${session.address === deployment.contractAddress.toLowerCase() ? "<p>Public test ledger: these three wallets are controlled test addresses, not independent organizations. Invoice facts are synthetic.</p>" : ""}`;
+    $("#proposals").innerHTML = `<h3>Expense proposals</h3>` + (state.proposals.map(p => `<article class="cost"><h3>${esc(p.description)}</h3><details><summary>Expense facts and proposer</summary><p>${esc(p.evidence)}</p><p>Proposed by ${esc(p.proposer)}</p></details><p>${cash(p.cap)} cap · ${esc(p.status)} · ${p.approvals.length}/2 approvals</p><p>${p.approvals.map(a => `Funder ${state.funders.indexOf(a) + 1}`).join(", ") || "No approvals yet"}</p>${p.status === "PENDING" ? `<button class="proposal-action" data-method="approve_cost" data-id="${p.id}" ${busy || !allowed("approve_cost", [p.id]) ? "disabled" : ""}>Approve as funder</button> <button class="proposal-action secondary" data-method="activate_cost" data-id="${p.id}" ${busy || !allowed("activate_cost", [p.id]) ? "disabled" : ""}>Check & activate</button>` : ""}</article>`).join("") || "<p>No proposals yet.</p>");
+  }
+
   $("#project").textContent = state.project;
   $("#badge").textContent =
-    mode === "demo" ? "ILLUSTRATIVE DEMO" : "LIVE · STUDIONET";
+    mode === "demo" ? "ILLUSTRATIVE DEMO" : session.state ? `LIVE V${state.schema} · STUDIONET` : "LIVE · STUDIONET";
   const total = state.costs.reduce((n, c) => n + c.cap, 0),
     occupied = state.costs.reduce((n, c) => n + used(state, c.id), 0);
   $("#stats").innerHTML =
@@ -68,7 +85,7 @@ function render() {
     state.reservations
       .map(
         (r) =>
-          `<div class="entry"><div><b>${esc(r.source)}</b><small>Expense ${r.cost_id} · ${esc(r.reference)} · ${r.active ? "Reserved" : "Released"}</small></div><strong>${cash(r.amount)}</strong>${r.active ? `<button class="quiet release" data-id="${r.id}">Release</button>` : ""}</div>`,
+          `<div class="entry"><div><b>${esc(v2 ? r.funder : r.source)}</b><small>${v2 && r.funder === session.account ? "Your reservation · " : ""}Expense ${r.cost_id} · ${esc(r.reference)} · ${r.active ? "Reserved" : "Released"}</small></div><strong>${cash(r.amount)}</strong>${r.active ? `<button class="quiet release" data-id="${r.id}">Release</button>` : ""}</div>`,
       )
       .join("") || "<p>No contributions recorded.</p>";
   if ([...$("#cost-select").options].some((o) => o.value === selected))
@@ -83,6 +100,15 @@ function render() {
   $("#export").disabled = busy || (mode === "live" && !session.state);
   $("#register button").disabled =
     busy || mode === "demo" || !session.state || session.stale;
+  if (v2) {
+    $("#reserve button").disabled = busy || !allowed("reserve");
+    $("#register button").disabled = busy || !allowed("propose_cost");
+    document.querySelectorAll(".release").forEach(b => b.disabled = busy || !allowed("release", [Number(b.dataset.id)]));
+    document.querySelectorAll(".proposal-action").forEach(b => {
+      b.disabled = busy || !allowed(b.dataset.method, [Number(b.dataset.id)]);
+      b.onclick = () => action(() => write(b.dataset.method, [Number(b.dataset.id)]));
+    });
+  }
   document
     .querySelectorAll(".release")
     .forEach(
@@ -125,7 +151,7 @@ $("#wallet").onclick = () =>
   action(async () => {
     const account = await session.connect();
     $("#wallet").textContent = account.slice(0, 6) + "…" + account.slice(-4);
-    notify("Wallet connected. Live writes require the project registrar.");
+    notify("Wallet connected. Role: " + walletRole(state, account));
   });
 $("#mode").onclick = () =>
   action(async () => {
@@ -151,7 +177,7 @@ $("#load").onclick = () =>
     } catch {
       /* Read-only use remains available if browser storage is disabled. */
     }
-    notify("Live contract loaded. Registrar: " + session.state.owner);
+    notify(session.state.schema === 2 ? "V2 loaded. Connect a participant wallet to propose, approve or activate expenses." : "Live contract loaded. Registrar: " + session.state.owner);
   });
 $("#recover").onclick = () => action(() => session.resume());
 $("#track").onclick = () =>
@@ -169,7 +195,7 @@ $("#reserve").onsubmit = (e) => {
     if (mode === "demo") {
       reserveDemo(state, ...args);
       demoNotice();
-    } else await write("reserve", args);
+    } else await write("reserve", state.schema === 2 ? [args[0], args[2], args[3]] : args);
   });
 };
 $("#register").onsubmit = (e) => {
@@ -185,7 +211,7 @@ $("#register").onsubmit = (e) => {
       throw Error(
         "Semantic comparison requires live GenLayer consensus. Connect a deployed contract to register costs.",
       );
-    await write("register_cost", args);
+    await write(state.schema === 2 ? "propose_cost" : "register_cost", args);
   });
 };
 $("#export").onclick = () => {
@@ -219,13 +245,15 @@ window.ethereum?.on?.("accountsChanged", () => {
   notify(
     "Wallet changed. Public ledger remains available; reconnect before writing.",
   );
+  render();
 });
 window.ethereum?.on?.("chainChanged", () => {
   session.walletChanged();
   $("#wallet").textContent = "Reconnect wallet";
   notify("Network changed. Reconnect to Studionet before writing.");
+  render();
 });
 render();
 notify(
-  "Illustrative demo · explore reservations and releases. Semantic checks require live GenLayer.",
+  "Accounting demo · explore reservations and releases. Switch to live and read the V2 ledger to inspect shared approvals.",
 );

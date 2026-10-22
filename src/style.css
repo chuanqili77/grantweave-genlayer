@@ -458,3 +458,8 @@ a:focus-visible {
     letter-spacing: 1px;
   }
 }
+
+#participants p { overflow-wrap: anywhere; }
+#proposals { margin-block: 1.5rem; }
+[hidden] { display: none !important; }
+.workspace > *, .entry > div { min-width: 0; }
