@@ -1,0 +1,20 @@
+{
+  "name": "grantweave",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build --base=./",
+    "test": "node --test src/*.test.js",
+    "test:browser": "node tests/browser.mjs",
+    "deploy:plan": "node scripts/deploy.mjs"
+  },
+  "dependencies": {
+    "genlayer-js": "1.1.8"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "vite": "7.3.1"
+  }
+}
