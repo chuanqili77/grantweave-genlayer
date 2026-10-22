@@ -46,3 +46,14 @@ test("finality requires successful execution", () => {
   );
   assert.ok(terminal({ statusName: "UNDETERMINED" }));
 });
+test("Studio full receipts require a finalized leader return", () => {
+  const receipt = { statusName: "FINALIZED", consensus_data: { leader_receipt: [
+    { mode: "leader", execution_result: "SUCCESS", result: { status: "return" } },
+  ] } };
+  assert.equal(successful(receipt), true);
+  assert.equal(successful({ ...receipt, statusName: "ACCEPTED" }), false);
+  receipt.consensus_data.leader_receipt[0].result.status = "error";
+  assert.equal(successful(receipt), false);
+  receipt.consensus_data.leader_receipt[0].mode = "validator";
+  assert.equal(successful(receipt), false);
+});

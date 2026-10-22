@@ -4,6 +4,17 @@ Every cost, counted once. GrantWeave is a GenLayer application for small project
 
 A registrar registers an expense with invoice facts and a maximum cost. GenLayer compares subsequent expense descriptions to the existing ledger, blocking renamed duplicates and uncertain overlaps. Funders' contributions are then reserved against the single underlying expense cap. Releasing a contribution restores capacity and preserves its history.
 
+## Public deployment
+
+- [Live application](https://chuanqili77.github.io/grantweave-genlayer/)
+- [Reusable contract](https://github.com/chuanqili77/grant-overlap-primitive)
+- Studio Network: `61999`
+- Contract: `0x87cB0341BDd533338e00A9E7F29dDd0396857A27`
+- [Network verification evidence](./public/studionet-verification.json)
+- Deployment transaction: `0x52695c83f1e9ce7b6db1318ff06ed8a3a218d53d96e10b42292ddb301da9758b`
+
+Switch to live mode and click **Read contract** to inspect the public test ledger without a wallet. This deployment uses a dedicated test registrar; connect your own deployment to manage a separate project.
+
 ## Run
 
 ```sh
@@ -11,7 +22,7 @@ npm ci
 npm run dev
 ```
 
-`npm test` checks amount parsing, reservation accounting, wallet identity, pending transaction recovery, stale-state protection and transaction success classification. `npm run build` emits a static site in `dist/`; serve it over HTTP. The relative base supports a future GitHub Pages repository path. The SDK dependency is pinned to GenLayerJS 1.1.8 and targets its Studionet interface; it is not a fee-enabled v2 network client.
+`npm test` checks amount parsing, reservation accounting, wallet identity, pending transaction recovery, stale-state protection and transaction success classification. `npm run build` emits a static site in `dist/`; serve it over HTTP. The relative base supports GitHub Pages repository paths. The SDK dependency is pinned to GenLayerJS 1.1.8 and targets its Studionet interface; it is not a fee-enabled v2 network client.
 
 ## Demo
 
@@ -41,17 +52,19 @@ Use `PLAYWRIGHT_EXECUTABLE_PATH` to select an existing Chromium executable. `APP
 
 ## Deployment and publishing
 
+`node scripts/verify-studionet.mjs` runs a resumable seven-step network check using `GRANTWEAVE_PRIVATE_KEY` and the local deployment record. It sends zero-value test transactions and records transaction IDs before tracking. Use a fresh test deployment for this fixture sequence.
+
 `npm run deploy:plan` prints the constructor arguments, chain ID and source hash without creating a wallet or submitting a transaction.
 
-For an operator-selected wallet, set `GRANTWEAVE_PRIVATE_KEY` in the shell environment, optionally set `GRANTWEAVE_PROJECT` and `GRANTWEAVE_CURRENCY`, then run `node scripts/deploy.mjs --send`. The key is never written into source or output. A deployment record retains the transaction ID before waiting; `node scripts/deploy.mjs --resume` tracks that record without signing again. The script targets Studionet 61999 only. Deployment has not been performed for this package.
+For an operator-selected wallet, set `GRANTWEAVE_PRIVATE_KEY` in the shell environment, optionally set `GRANTWEAVE_PROJECT` and `GRANTWEAVE_CURRENCY`, then run `node scripts/deploy.mjs --send`. The key is never written into source or output. A deployment record retains the transaction ID before waiting; `node scripts/deploy.mjs --resume` tracks that record without signing again. The script targets Studionet 61999 only.
 
-The **Publish Pages** workflow is manually triggered once this application folder is the repository root and GitHub Pages is configured to use GitHub Actions. It builds and publishes `dist/` without embedding an owner or repository name. A favicon, SVG logo and 512 × 512 PNG logo are included in `public/`.
+The **Publish Pages** workflow publishes the application through GitHub Actions on each push to `main` or a manual run. It builds and publishes `dist/` without embedding an owner or repository name. A favicon, SVG logo and 512 × 512 PNG logo are included in `public/`.
 
 ## Scope
 
 One project and one registrar per deployment. This is capacity bookkeeping, not fund transfer, official grant approval or proof of invoice authenticity. Supplied evidence is not independently fetched from invoice providers. The app cannot see undisclosed or external funding. Semantic errors and disagreements remain possible; uncertainty fails closed. Costs cannot be edited, and partially overlapping costs require clarification before registration.
 
-The local build and deterministic tests do not establish network deployment or real consensus success. No deployed address is bundled. Network integration requires a real deployment and wallet testing.
+The public test deployment is bundled as the default live address. Local tests use mocks; public transaction evidence is maintained separately from those tests. Writing to any deployment requires its registrar wallet.
 
 ## License
 

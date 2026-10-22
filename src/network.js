@@ -1,5 +1,6 @@
 import { createClient } from "genlayer-js";
 import { studionet } from "genlayer-js/chains";
+import { normalizeReceipt } from "./model.js";
 
 export function createAdapter(provider = window.ethereum) {
   const reader = createClient({ chain: studionet });
@@ -22,13 +23,14 @@ export function createAdapter(provider = window.ethereum) {
         transactionHashVariant: "latest-final",
       }),
     transaction: (hash) => reader.getTransaction({ hash }),
-    wait: (hash) =>
-      reader.waitForTransactionReceipt({
+    wait: async (hash) =>
+      normalizeReceipt(await reader.waitForTransactionReceipt({
         hash,
         status: "FINALIZED",
         interval: 5000,
         retries: 24,
-      }),
+        fullTransaction: true,
+      })),
     async write(address, account, functionName, args) {
       const writer = createClient({ chain: studionet, account, provider });
       await writer.connect("studionet");

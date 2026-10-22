@@ -3,7 +3,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { createAccount, createClient } from "genlayer-js";
 import { studionet } from "genlayer-js/chains";
-import { successful } from "../src/model.js";
+import { successful, normalizeReceipt } from "../src/model.js";
 const source = await readFile(
   new URL("../public/contracts/grant_overlap.py", import.meta.url),
   "utf8",
@@ -74,15 +74,16 @@ if (!send && !resume) {
     });
     console.log(`Deployment submitted: ${hash}. Record: ${path}`);
   }
-  const receipt = await client.waitForTransactionReceipt({
+  const receipt = normalizeReceipt(await client.waitForTransactionReceipt({
     hash: record.transactionHash,
     status: "FINALIZED",
     interval: 5000,
     retries: 60,
-  });
+    fullTransaction: true,
+  }));
   record.status = receipt.statusName;
   record.execution = receipt.txExecutionResultName;
-  record.contractAddress = receipt.txDataDecoded?.contractAddress || null;
+  record.contractAddress = receipt.txDataDecoded?.contractAddress || receipt.data?.contract_address || null;
   await writeFile(path, JSON.stringify(record, null, 2) + "\n");
   if (!successful(receipt))
     throw Error(

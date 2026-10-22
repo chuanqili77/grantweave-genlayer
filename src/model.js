@@ -41,9 +41,23 @@ export const used = (state, id) =>
   state.reservations
     .filter((r) => r.cost_id === id && r.active)
     .reduce((s, r) => s + r.amount, 0);
-export const successful = (r) =>
-  r?.statusName === "FINALIZED" &&
-  r?.txExecutionResultName === "FINISHED_WITH_RETURN";
+export function normalizeReceipt(r) {
+  if (!r) return r;
+  const receipts = r.consensus_data?.leader_receipt;
+  const leader = (Array.isArray(receipts) ? receipts : [receipts])
+    .filter(Boolean).find((x) => x.mode === "leader");
+  const execution = r.txExecutionResultName || r.tx_execution_result_name ||
+    (leader?.execution_result === "SUCCESS" && leader?.result?.status === "return"
+      ? "FINISHED_WITH_RETURN"
+      : leader?.execution_result);
+  return { ...r, statusName: r.statusName || r.status_name,
+    txExecutionResultName: execution };
+}
+export const successful = (r) => {
+  const receipt = normalizeReceipt(r);
+  return receipt?.statusName === "FINALIZED" &&
+    receipt?.txExecutionResultName === "FINISHED_WITH_RETURN";
+};
 export const terminal = (r) =>
   ["FINALIZED", "CANCELED", "UNDETERMINED"].includes(r?.statusName);
 export function reserveDemo(state, id, source, amount, reference) {
