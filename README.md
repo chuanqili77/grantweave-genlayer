@@ -58,7 +58,7 @@ Use `PLAYWRIGHT_EXECUTABLE_PATH` to select an existing Chromium executable. `APP
 
 For an operator-selected wallet, set `GRANTWEAVE_PRIVATE_KEY` in the shell environment, optionally set `GRANTWEAVE_PROJECT` and `GRANTWEAVE_CURRENCY`, then run `node scripts/deploy.mjs --send`. The key is never written into source or output. A deployment record retains the transaction ID before waiting; `node scripts/deploy.mjs --resume` tracks that record without signing again. The script targets Studionet 61999 only.
 
-The **Publish Pages** workflow publishes the application through GitHub Actions on each push to `main` or a manual run. It builds and publishes `dist/` without embedding an owner or repository name. A favicon, SVG logo and 512 × 512 PNG logo are included in `public/`.
+The **Publish Pages** workflow builds and deploys `dist/` on each push to `main` or a manual run. A favicon, SVG logo and 512 × 512 PNG logo are included in `public/`.
 
 ## Scope
 
