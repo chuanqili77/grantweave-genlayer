@@ -7,6 +7,8 @@ const dev = process.env.DEV_URL || "http://127.0.0.1:5173";
 const launch = { headless: true };
 if (process.env.PLAYWRIGHT_EXECUTABLE_PATH) {
   launch.executablePath = process.env.PLAYWRIGHT_EXECUTABLE_PATH;
+}
+if (process.env.PLAYWRIGHT_SINGLE_PROCESS === "1") {
   launch.args = [
     "--no-sandbox",
     "--font-render-hinting=none",
