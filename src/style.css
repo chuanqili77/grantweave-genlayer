@@ -201,7 +201,7 @@ h2 {
 }
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid #d2d9c9;
   border-bottom: 1px solid #d2d9c9;
   padding: 25px 0;
@@ -346,7 +346,7 @@ hr {
 }
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 }
 .steps b {
@@ -361,6 +361,9 @@ footer {
 footer {
   border-top: 1px solid #d2d9c9;
   padding: 24px 0 40px;
+}
+#contract-link {
+  word-break: break-all;
 }
 @media (max-width: 800px) {
   header {
@@ -396,6 +399,10 @@ footer {
   }
   .stats strong {
     font-size: 23px;
+  }
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 18px;
   }
   .stats div {
     padding-left: 12px;

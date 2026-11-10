@@ -12,6 +12,28 @@ A shared expense ledger for small projects with two funders. Both funders approv
 - [V2 network verification](./public/studionet-v2-verification.json)
 - Deployment transaction: `0x131839e89ba89541cef2f2eb066e348849d37b7d2ec949e7561f9d9fa539a448`
 
+## Spend receipts
+
+The receipts ledger closes the V2 lifecycle: a reservation is settled only
+when the project party submits a receipt that consensus matches against the
+funder-approved cost facts. Anything else is rejected and the reservation
+stays active; spent amounts stay committed to the cost cap.
+
+- [Receipts contract](https://explorer-studio.genlayer.com/address/0xB34F2e0867D4Ef3cE91E17D407a5D76c9949e4f3): `0xB34F2e0867D4Ef3cE91E17D407a5D76c9949e4f3`
+- [Receipts deployment record](./public/deployment.json)
+- [Receipts network verification](./public/studionet-receipts-verification.json)
+- Deployment transaction: `0x91e307e4678b1bc3deae460a938262ae1e4327d47567b6b2e5f171cee7bb7586`
+- [Reviewer guide](./REVIEWER.md) · [Expected results](./evidence/EXPECTED.md)
+
+The project party calls `submit_receipt(reservation_id, supplier, invoice_id, amount, period)`.
+The amount must equal the reserved amount; supplier, invoice, period and
+deliverable must match the approved cost record as judged by the same
+leader/validator exact-agreement classification used at activation. Only a
+SAME verdict records the receipt and marks the reservation SPENT. The
+contract source is published byte-identical in the app
+(`public/contracts/grant_overlap_receipts.py`) and in the
+[reusable primitive](https://github.com/chuanqili77/grant-overlap-primitive).
+
 Switch to live and click **Read contract**. Anyone can inspect participants, proposal approvals, active expense capacity and funding history without connecting a wallet. The public ledger uses three controlled test wallets to exercise permissions, not three independent organizations. Invoice facts are synthetic; test transactions transfer zero value.
 
 The V2 verification records 25 finalized test calls. It includes denied project self-approval, one-approval activation, cross-funder release, over-cap reservation and an approved duplicate rejected by semantic consensus. One venue activation received MAJORITY_DISAGREE and left state unchanged; a new proposal with clarified booking facts received fresh approvals and activated successfully. Both outcomes are retained in the evidence.
@@ -25,6 +47,7 @@ The V2 verification records 25 finalized test calls. It includes denied project 
 5. After both approvals, any participant clicks **Check & activate**. The contract compares against the latest active expenses. A duplicate or uncertain result leaves the proposal pending without creating capacity. Approved facts and caps cannot be edited.
 6. A funder selects an active expense and reserves an amount with its reference. The contract records the signing wallet as the funder. That wallet alone can release the reservation, preserving its history.
 7. Use **Export ledger** to download the current snapshot with mode, chain ID, contract address, freshness and export time.
+8. On the receipts ledger, the project party submits **Submit a receipt** for an active reservation with supplier, invoice ID, amount and service period. Consensus checks the receipt against the approved cost facts; a match settles the reservation as SPENT, anything else leaves it reserved. A settled reservation cannot be released, and its amount stays committed to the expense cap.
 
 After another participant writes, click **Read contract** to refresh before continuing. Button availability reflects the last loaded snapshot; the contract always enforces the final permission and state checks.
 
@@ -47,6 +70,8 @@ npm test
 npm run build
 npx playwright install chromium
 npm run test:browser
+npm run verify:receipts
+node scripts/verify-receipts-evidence.mjs
 ```
 
 Unit tests cover amount parsing, schema validation, funder permissions, immutable approval links, pending recovery and successful execution classification. Browser checks cover the production accounting demo and responsive layout, then use a test-only adapter for V1 recovery and V2 role changes, two-wallet approval, activation and owner-only release. Simulated UI results are not network evidence. Set `LIVE_CONTRACT_ADDRESS` to additionally check a real public V2 read and live JSON export; this requires browser access to the Studio RPC endpoint. Use `PLAYWRIGHT_EXECUTABLE_PATH` for an existing Chromium, or `APP_URL` and `DEV_URL` for existing local servers.
@@ -57,11 +82,15 @@ The relative Vite base supports GitHub Pages repository paths. GenLayerJS `1.1.8
 
 `npm run verify:v2` deploys a fresh V2 test ledger if no local V2 record exists, then runs a resumable verification sequence. Set `GRANTWEAVE_PRIVATE_KEY`, `GRANTWEAVE_FUNDER_A_KEY` and `GRANTWEAVE_FUNDER_B_KEY` to three selected test wallets. Keys are read from environment variables and are never written into evidence. The script saves transaction IDs before tracking, sends zero transfer value, verifies expected rejections leave state unchanged, and records narrowed receipts, validator votes and before/after snapshots, including observed consensus disagreements in `deployments/`. Running it again resumes saved transactions rather than repeating verified steps. Do not use the fixture sequence against an unrelated existing project.
 
+`npm run verify:receipts` does the same for the receipts ledger: it deploys a fresh receipts contract (or resumes a saved deployment), funds three fresh test wallets with `sim_fundAccount` when no `GRANTWEAVE_RECEIPTS_*_KEY` variables are set, and runs the resumable receipts journey, negative cases and V2 regression. Generated test keys are checkpointed to `deployments/.receipts-keys.json` (0600, gitignored) and deleted when the flow completes. Evidence is split into `evidence/receipts-{journey,negative-cases,regression,evidence}.json`, with the combined index also copied to `public/studionet-receipts-verification.json`. `node scripts/verify-receipts-evidence.mjs` re-reads every evidence transaction and the deployed code from the public RPC with no keys.
+
 The **Check** workflow runs unit, build and browser checks. **Publish Pages** builds and publishes `dist/` on pushes to `main`. A favicon, SVG logo and 512 × 512 PNG logo are included in `public/`.
 
 ## Trust and limitations
 
 V2 removes the project party's unilateral ability to approve costs or manage funder reservations. It does not establish independent ownership of the addresses, prevent collusion, certify invoice authenticity or discover omitted external funding. Either funder can block activation by withholding approval. Membership is fixed, there is no administrator override, and abandoned proposals still consume the bounded proposal limit.
+
+A matching receipt proves the receipt text matches the funder-approved cost facts. It does not certify the supplier invoice is genuine, that the goods were delivered, or that the purchase happened off-chain. A false invoice that textually matches the approved facts would still settle.
 
 This is capacity bookkeeping, not fund transfer, escrow or official grant approval. Semantic errors remain possible; uncertainty fails closed. Partially overlapping purchases require clarified proposals. Do not publish private invoice data.
 

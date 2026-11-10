@@ -283,6 +283,52 @@ try {
   assert.deepEqual(errors,[]);
   console.log('V2 browser: proposal, distinct wallet approvals, activation, address-bound reserve arguments, owner-only release and responsive layout passed.');
 
+  // Receipts UI on a schema 3 ledger: project-party submission settles a
+  // reservation as spent; funders cannot submit.
+  const receipts = await browser.newContext({ viewport: { width: 1280, height: 1100 } });
+  await receipts.addInitScript(() => {
+    const project = '0x'+'1'.repeat(40), a = '0x'+'a'.repeat(40), b = '0x'+'b'.repeat(40);
+    window.__r3 = {project,a,b,account:project,writes:[],listeners:{}};
+    window.ethereum={on:(event,fn)=>window.__r3.listeners[event]=fn};
+  });
+  await receipts.route('**/src/network.js', route=>route.fulfill({contentType:'application/javascript',body:`
+    export function createAdapter(){const f=window.__r3;
+    const state={schema:3,project:'Receipts test',currency:'USD',project_party:f.project,funders:[f.a,f.b],required_approvals:2,
+      proposals:[{id:1,proposer:f.project,description:'Microscope',evidence:'Invoice LAB-104',cap:120000,approvals:[f.a,f.b],status:'ACTIVE',cost_id:1}],
+      costs:[{id:1,proposal_id:1,description:'Microscope',evidence:'Invoice LAB-104',cap:120000}],
+      reservations:[{id:1,cost_id:1,funder:f.a,amount:120000,reference:'A-001',active:true,spent:false,receipt_id:null}],
+      receipts:[]};
+    return {chainId:61999,connect:async()=>f.account,accounts:async()=>[f.account],chain:async()=>61999,
+      read:async()=>JSON.stringify(state),wait:async()=>({statusName:'FINALIZED',txExecutionResultName:'FINISHED_WITH_RETURN',resultName:'MAJORITY_AGREE'}),
+      write:async(address,account,name,args)=>{f.writes.push({account,name,args});
+        if(name==='submit_receipt'){const r=state.reservations[args[0]-1];r.active=false;r.spent=true;r.receipt_id=state.receipts.length+1;
+          state.receipts.push({id:state.receipts.length+1,reservation_id:args[0],cost_id:r.cost_id,supplier:args[1],invoice_id:args[2],amount:args[3],period:args[4],status:'SPENT'});}
+        return '0x'+'e'.repeat(64);}};}` }));
+  const r3=await receipts.newPage();r3.on('pageerror',e=>errors.push(e.message));
+  await r3.goto(dev);await r3.locator('#mode').click();await r3.locator('#load').click();
+  await r3.getByRole('heading',{name:'Receipts test'}).waitFor();
+  assert.equal(await r3.locator('#receipts').getByText('No receipts recorded yet.').count(),1);
+  assert.ok(await r3.locator('#receipt button').isDisabled());
+  await r3.locator('#wallet').click();
+  await r3.locator('#participants').filter({hasText:'Project party'}).waitFor();
+  assert.ok(await r3.locator('#receipt button').isEnabled());
+  await r3.locator('#receipt [name=supplier]').fill('North Lab Tools');
+  await r3.locator('#receipt [name=invoice]').fill('LAB-104');
+  await r3.locator('#receipt [name=amount]').fill('1200.00');
+  await r3.locator('#receipt [name=period]').fill('2026-10-01');
+  await r3.locator('#receipt button').click();
+  await r3.locator('#receipts').filter({hasText:'SPENT'}).waitFor();
+  await r3.locator('#history').filter({hasText:'Spent'}).waitFor();
+  assert.deepEqual(await r3.evaluate(()=>window.__r3.writes.at(-1)), {account:'0x'+'1'.repeat(40), name:'submit_receipt', args:[1,'North Lab Tools','LAB-104',120000,'2026-10-01']});
+  assert.ok(await r3.locator('#receipt button').isDisabled());
+  await r3.evaluate(()=>{const f=window.__r3;f.account=f.a;f.listeners.accountsChanged();});
+  await r3.locator('#wallet').click();
+  await r3.locator('#participants').filter({hasText:'Funder 1'}).waitFor();
+  assert.ok(await r3.locator('#receipt button').isDisabled());
+  for(const width of [390,768,1280]){await r3.setViewportSize({width,height:1000});assert.ok(await r3.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), 'Receipts viewport overflow at '+width);}
+  assert.deepEqual(errors,[]);
+  console.log('Receipts browser: project-party submission settles a reservation as spent, funder submission blocked, responsive layout passed.');
+
   if (process.env.LIVE_CONTRACT_ADDRESS) {
     const actual=await context.newPage();actual.on('pageerror',e=>errors.push(e.message));
     await actual.goto(base);await actual.locator('#mode').click();
@@ -296,7 +342,7 @@ try {
     const liveExport=JSON.parse(await readFile(await saved.path(),'utf8'));
     assert.equal(liveExport.mode,'live');assert.equal(liveExport.chainId,61999);
     assert.equal(liveExport.contract,process.env.LIVE_CONTRACT_ADDRESS.toLowerCase());
-    assert.equal(liveExport.stateFresh,true);assert.equal(liveExport.ledger.schema,2);
+    assert.equal(liveExport.stateFresh,true);assert.ok([2,3].includes(liveExport.ledger.schema));
     assert.equal(liveExport.ledger.required_approvals,2);
     if(process.env.SCREENSHOT_DIR)await actual.screenshot({path:process.env.SCREENSHOT_DIR+'/v2-live.png',fullPage:true});
     console.log('Real V2 public read and live JSON export passed:',liveExport.contract);

@@ -41,6 +41,13 @@ export const used = (state, id) =>
   state.reservations
     .filter((r) => r.cost_id === id && r.active)
     .reduce((s, r) => s + r.amount, 0);
+export const spent = (state, id) =>
+  (state.receipts || [])
+    .filter((r) => r.cost_id === id)
+    .reduce((s, r) => s + r.amount, 0);
+// Spent money stays committed to the cap: settling a reservation must never
+// free capacity for a second spend against the same approved cost.
+export const committed = (state, id) => used(state, id) + spent(state, id);
 export function normalizeReceipt(r) {
   if (!r) return r;
   const receipts = r.consensus_data?.leader_receipt;
@@ -89,7 +96,7 @@ export function validateSnapshot(raw) {
   const text = (v, max) => typeof v === "string" && v.trim() && v.length <= max;
   if (
     !s ||
-    ![1, 2].includes(s.schema) ||
+    ![1, 2, 3].includes(s.schema) ||
     !text(s.project, 160) ||
     !/^[A-Z]{3}$/.test(s.currency) ||
     (s.schema === 1 && !/^0x[0-9a-fA-F]{40}$/.test(s.owner)) ||
@@ -99,7 +106,8 @@ export function validateSnapshot(raw) {
     s.reservations.length > 120
   )
     throw Error("Unexpected contract schema");
-  if (s.schema === 2) validateV2(s, text, integer);
+  if (s.schema === 2 || s.schema === 3) validateV2(s, text, integer);
+  if (s.schema === 3) validateReceipts(s, text, integer);
   s.costs.forEach((c, i) => {
     if (
       c.id !== i + 1 ||
@@ -120,17 +128,48 @@ export function validateSnapshot(raw) {
       typeof r.active !== "boolean" ||
       (s.schema === 1 ? !text(r.source, 160) : !s.funders.includes(r.funder)) ||
       !text(r.reference, 160) ||
-      references.has(s.schema === 2 ? `${r.funder}:${r.reference}` : r.reference)
+      references.has(s.schema === 2 || s.schema === 3 ? `${r.funder}:${r.reference}` : r.reference) ||
+      (s.schema === 3 &&
+        (typeof r.spent !== "boolean" ||
+          (r.spent
+            ? !Number.isSafeInteger(r.receipt_id) || r.active
+            : r.receipt_id !== null && r.receipt_id !== undefined)))
     )
       throw Error("Invalid reservation in contract state");
-    references.add(s.schema === 2 ? `${r.funder}:${r.reference}` : r.reference);
+    references.add(s.schema === 2 || s.schema === 3 ? `${r.funder}:${r.reference}` : r.reference);
   });
-  if (s.costs.some((c) => used(s, c.id) > c.cap))
+  if (s.costs.some((c) => committed(s, c.id) > c.cap))
     throw Error("Contract state exceeds an expense cap");
   return s;
 }
 
 const address = (v) => typeof v === "string" && /^0x[0-9a-f]{40}$/.test(v) && !/^0x0{40}$/.test(v);
+function validateReceipts(s, text, integer) {
+  if (!Array.isArray(s.receipts) || s.receipts.length > 120)
+    throw Error("Invalid receipts in contract state");
+  s.receipts.forEach((r, i) => {
+    const reservation = s.reservations[r?.reservation_id - 1];
+    if (
+      !r ||
+      r.id !== i + 1 ||
+      !reservation ||
+      r.cost_id !== reservation.cost_id ||
+      !text(r.supplier, 160) ||
+      !text(r.invoice_id, 160) ||
+      !text(r.period, 160) ||
+      !integer(r.amount) ||
+      r.amount !== reservation.amount ||
+      r.status !== "SPENT"
+    )
+      throw Error("Invalid receipt in contract state");
+    if (!reservation.spent || reservation.receipt_id !== r.id || reservation.active)
+      throw Error("Receipt does not match its settled reservation");
+  });
+  s.reservations.forEach((r) => {
+    if (r.spent && !s.receipts.some((x) => x.id === r.receipt_id && x.reservation_id === r.id))
+      throw Error("Settled reservation has no receipt");
+  });
+}
 function validateV2(s, text, integer) {
   if (!address(s.project_party) || !Array.isArray(s.funders) ||
       s.funders.length !== 2 || !s.funders.every(address) ||
@@ -157,7 +196,7 @@ function validateV2(s, text, integer) {
 export function walletRole(state, account) {
   const who = account?.toLowerCase();
   if (!who) return "Disconnected";
-  if (state.schema === 2) {
+  if (state.schema === 2 || state.schema === 3) {
     if (who === state.project_party) return "Project party";
     const index = state.funders.indexOf(who);
     return index >= 0 ? `Funder ${index + 1}` : "Read only";
@@ -166,12 +205,15 @@ export function walletRole(state, account) {
 }
 export function canWrite(state, account, method, args = []) {
   const role = walletRole(state, account);
-  if (state.schema !== 2) return role === "Registrar";
+  if (state.schema !== 2 && state.schema !== 3) return role === "Registrar";
   const funder = role.startsWith("Funder ");
   const participant = funder || role === "Project party";
   if (method === "propose_cost") return participant;
   if (method === "reserve") return funder;
   if (method === "release") return funder && state.reservations.some(r => r.id === args[0] && r.active && r.funder === account.toLowerCase());
+  if (method === "submit_receipt")
+    return role === "Project party" &&
+      state.reservations.some(r => r.id === args[0] && r.active && !r.spent);
   const proposal = state.proposals.find(p => p.id === args[0]);
   if (!proposal || proposal.status !== "PENDING") return false;
   if (method === "approve_cost") return funder && !proposal.approvals.includes(account.toLowerCase());

@@ -1,0 +1,61 @@
+{
+  "contractAddress": "0xB34F2e0867D4Ef3cE91E17D407a5D76c9949e4f3",
+  "costCount": 3,
+  "finalReceipts": [
+    {
+      "amount": 120000,
+      "cost_id": 1,
+      "id": 1,
+      "invoice_id": "LAB-104",
+      "period": "2026-10-01",
+      "reservation_id": 1,
+      "status": "SPENT",
+      "supplier": "North Lab Tools"
+    },
+    {
+      "amount": 40000,
+      "cost_id": 2,
+      "id": 2,
+      "invoice_id": "HALL-22",
+      "period": "2026-11-12 to 2026-11-13",
+      "reservation_id": 2,
+      "status": "SPENT",
+      "supplier": "East Hall Association"
+    }
+  ],
+  "finalReservations": [
+    {
+      "active": false,
+      "amount": 120000,
+      "cost_id": 1,
+      "funder": "0x972f5bc6fcda37145910443b2a291a90c224f8fe",
+      "id": 1,
+      "receipt_id": 1,
+      "reference": "A-001",
+      "spent": true
+    },
+    {
+      "active": false,
+      "amount": 40000,
+      "cost_id": 2,
+      "funder": "0x972f5bc6fcda37145910443b2a291a90c224f8fe",
+      "id": 2,
+      "receipt_id": 2,
+      "reference": "HALL-A-001",
+      "spent": true
+    },
+    {
+      "active": false,
+      "amount": 10000,
+      "cost_id": 3,
+      "funder": "0x8d465197bd80f890ad780c2c0aec134fcca0b562",
+      "id": 3,
+      "receipt_id": null,
+      "reference": "SUP-B-001",
+      "spent": false
+    }
+  ],
+  "proposalCount": 4,
+  "sourceSha256": "d38e3cdd4b9682377d40ba89156b7e2460a8321a7f9de242a517b8acfc920561",
+  "spentTotal": 160000
+}
