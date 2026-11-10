@@ -138,6 +138,21 @@ h1 em {
   display: inline-block;
   font-weight: 700;
 }
+.readback {
+  font-size: 10px;
+  letter-spacing: 1px;
+  border: 1px solid #123d35;
+  background: #e7f0e8;
+  color: #123d35;
+  padding: 6px 9px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 700;
+  margin-left: 8px;
+}
+.readback[hidden] {
+  display: none;
+}
 .thread {
   display: flex;
   flex-wrap: wrap;
